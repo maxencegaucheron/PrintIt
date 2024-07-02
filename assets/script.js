@@ -31,6 +31,12 @@ while (nombreDePoints < nombreDeSlides) {
 	nombreDePoints++
 }
 
+// Point actif
+
+let currentSlide = 0;
+let pointActif = document.querySelectorAll(".dot");
+pointActif[currentSlide].classList.add("dot_selected");
+
 // Clic sur la flèche gauche
 
 let arrow_left = document.querySelector(".arrow_left");
@@ -44,3 +50,6 @@ let arrow_right = document.querySelector(".arrow_right");
 arrow_right.addEventListener("click", function () {
 	console.log("Vous avez cliqué sur la flèche droite");
 });
+
+// 
+
