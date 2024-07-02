@@ -17,6 +17,20 @@ const slides = [
 	}
 ]
 
+const nombreDeSlides = slides.length
+let point = document.querySelectorAll(".dot");
+let nombreDePoints = point.length
+const parentDesPoints = document.querySelector(".dots");
+
+// Ajout de points en fonction du nombre de slides
+
+while (nombreDePoints < nombreDeSlides) {
+	let point = document.createElement("div")
+	point.className = "dot";
+	parentDesPoints.appendChild(point)
+	nombreDePoints++
+}
+
 // Clic sur la flèche gauche
 
 let arrow_left = document.querySelector(".arrow_left");
