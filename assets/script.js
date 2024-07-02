@@ -26,7 +26,7 @@ const parentDesPoints = document.querySelector(".dots");
 
 while (nombreDePoints < nombreDeSlides) {
 	let point = document.createElement("div")
-	point.className = "dot";
+	point.classList = "dot";
 	parentDesPoints.appendChild(point)
 	nombreDePoints++
 }
