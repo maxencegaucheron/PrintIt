@@ -36,7 +36,7 @@ let index = 0;
 let pointActif = document.querySelectorAll(".dot");
 pointActif[index].classList.add("dot_selected");
 
-let imageBanniere = document.querySelector("banner-img");
+let imageBanniere = document.querySelector(".banner-img");
 let texteBanniere = document.querySelector("#banner p");
 
 // Clic sur la flèche gauche
@@ -48,12 +48,15 @@ arrow_left.addEventListener("click", function () {
 		index = nombreDeSlides - 1;
 		pointActif[0].classList.remove("dot_selected");
 		pointActif[index].classList.add("dot_selected");
+		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 
 	else {
 		pointActif[index + 1].classList.remove("dot_selected");
 		pointActif[index].classList.add("dot_selected");
-		console.log("Vous avez cliqué sur la flèche gauche");
+		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 
 });
@@ -67,12 +70,15 @@ arrow_right.addEventListener("click", function () {
 		index = 0;
 		pointActif[nombreDeSlides - 1].classList.remove("dot_selected");
 		pointActif[index].classList.add("dot_selected");
+		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 
 	else {
 		pointActif[index - 1].classList.remove("dot_selected");
 		pointActif[index].classList.add("dot_selected");
-		console.log("Vous avez cliqué sur la flèche droite", index);
+		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 });
 
