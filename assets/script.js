@@ -31,11 +31,11 @@ while (nombreDePoints < nombreDeSlides) {
 	nombreDePoints++
 }
 
-// Point actif
+// Point actif sur la slide actuelle
 
-let currentSlide = 0;
+let slideActuelle = 0;
 let pointActif = document.querySelectorAll(".dot");
-pointActif[currentSlide].classList.add("dot_selected");
+pointActif[slideActuelle].classList.add("dot_selected");
 
 // Clic sur la flèche gauche
 
