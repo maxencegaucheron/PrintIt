@@ -1,3 +1,5 @@
+// Tableau contenant les images et leur paragraphe
+
 const slides = [
 	{
 		"image": "slide1.jpg",
@@ -17,7 +19,12 @@ const slides = [
 	}
 ]
 
+// Variables
+
+let index = 0;
 const nombreDeSlides = slides.length
+const imageBanniere = document.querySelector(".banner-img");
+const texteBanniere = document.querySelector("#banner p");
 const parentDesPoints = document.querySelector(".dots");
 
 // Ajout de points en fonction du nombre de slides
@@ -26,17 +33,13 @@ for (let i = 0; i < nombreDeSlides; i++) {
 	const point = document.createElement("div")
 	point.classList = "dot";
 	parentDesPoints.appendChild(point)
+
+	// Point actif sur la slide initiale
+
+	if (i === 0) point.classList.add("dot_selected");
 }
 
-// Point actif sur la slide actuelle
-
-let index = 0;
-
-const pointActif = document.querySelectorAll(".dot");
-pointActif[index].classList.add("dot_selected");
-
-const imageBanniere = document.querySelector(".banner-img");
-const texteBanniere = document.querySelector("#banner p");
+const point = document.querySelectorAll(".dot");
 
 // Clic sur la flèche gauche
 
@@ -47,14 +50,14 @@ arrow_left.addEventListener("click", function () {
 
 	if (index < 0) {
 		index = nombreDeSlides - 1;
-		pointActif[0].classList.remove("dot_selected");
+		point[0].classList.remove("dot_selected");
 	}
 
 	else {
-		pointActif[index + 1].classList.remove("dot_selected");
+		point[index + 1].classList.remove("dot_selected");
 	}
 
-	pointActif[index].classList.add("dot_selected");
+	point[index].classList.add("dot_selected");
 	imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
 	texteBanniere.innerHTML = slides[index].tagLine;
 });
@@ -68,15 +71,14 @@ arrow_right.addEventListener("click", function () {
 
 	if (index > nombreDeSlides - 1) {
 		index = 0;
-		pointActif[nombreDeSlides - 1].classList.remove("dot_selected");
+		point[nombreDeSlides - 1].classList.remove("dot_selected");
 	}
 
 	else {
-		pointActif[index - 1].classList.remove("dot_selected");
-		pointActif[index].classList.add("dot_selected");
+		point[index - 1].classList.remove("dot_selected");
 	}
 
-	pointActif[index].classList.add("dot_selected");
+	point[index].classList.add("dot_selected");
 	imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
 	texteBanniere.innerHTML = slides[index].tagLine;
 });
