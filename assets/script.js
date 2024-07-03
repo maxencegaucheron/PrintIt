@@ -32,23 +32,48 @@ while (nombreDePoints < nombreDeSlides) {
 }
 
 // Point actif sur la slide actuelle
-
-let slideActuelle = 0;
+let index = 0;
 let pointActif = document.querySelectorAll(".dot");
-pointActif[slideActuelle].classList.add("dot_selected");
+pointActif[index].classList.add("dot_selected");
+
+let imageBanniere = document.querySelector("banner-img");
+let texteBanniere = document.querySelector("#banner p");
 
 // Clic sur la flèche gauche
 
 let arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", function () {
-	console.log("Vous avez cliqué sur la flèche gauche");
+	index--
+	if (index < 0) {
+		index = nombreDeSlides - 1;
+		pointActif[0].classList.remove("dot_selected");
+		pointActif[index].classList.add("dot_selected");
+	}
+
+	else {
+		pointActif[index + 1].classList.remove("dot_selected");
+		pointActif[index].classList.add("dot_selected");
+		console.log("Vous avez cliqué sur la flèche gauche");
+	}
+
 });
 
 // Clic sur la flèche droite
 
 let arrow_right = document.querySelector(".arrow_right");
 arrow_right.addEventListener("click", function () {
-	console.log("Vous avez cliqué sur la flèche droite");
+	index++
+	if (index > nombreDeSlides - 1) {
+		index = 0;
+		pointActif[nombreDeSlides - 1].classList.remove("dot_selected");
+		pointActif[index].classList.add("dot_selected");
+	}
+
+	else {
+		pointActif[index - 1].classList.remove("dot_selected");
+		pointActif[index].classList.add("dot_selected");
+		console.log("Vous avez cliqué sur la flèche droite", index);
+	}
 });
 
 // 
