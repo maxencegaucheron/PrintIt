@@ -18,69 +18,65 @@ const slides = [
 ]
 
 const nombreDeSlides = slides.length
-let point = document.querySelectorAll(".dot");
-let nombreDePoints = point.length
 const parentDesPoints = document.querySelector(".dots");
 
 // Ajout de points en fonction du nombre de slides
 
-while (nombreDePoints < nombreDeSlides) {
-	let point = document.createElement("div")
+for (let i = 0; i < nombreDeSlides; i++) {
+	const point = document.createElement("div")
 	point.classList = "dot";
 	parentDesPoints.appendChild(point)
-	nombreDePoints++
 }
 
 // Point actif sur la slide actuelle
+
 let index = 0;
-let pointActif = document.querySelectorAll(".dot");
+
+const pointActif = document.querySelectorAll(".dot");
 pointActif[index].classList.add("dot_selected");
 
-let imageBanniere = document.querySelector(".banner-img");
-let texteBanniere = document.querySelector("#banner p");
+const imageBanniere = document.querySelector(".banner-img");
+const texteBanniere = document.querySelector("#banner p");
 
 // Clic sur la flèche gauche
 
 let arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", function () {
+
 	index--
+
 	if (index < 0) {
 		index = nombreDeSlides - 1;
 		pointActif[0].classList.remove("dot_selected");
-		pointActif[index].classList.add("dot_selected");
-		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
-		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 
 	else {
 		pointActif[index + 1].classList.remove("dot_selected");
-		pointActif[index].classList.add("dot_selected");
-		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
-		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 
+	pointActif[index].classList.add("dot_selected");
+	imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+	texteBanniere.innerHTML = slides[index].tagLine;
 });
 
 // Clic sur la flèche droite
 
 let arrow_right = document.querySelector(".arrow_right");
 arrow_right.addEventListener("click", function () {
+
 	index++
+
 	if (index > nombreDeSlides - 1) {
 		index = 0;
 		pointActif[nombreDeSlides - 1].classList.remove("dot_selected");
-		pointActif[index].classList.add("dot_selected");
-		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
-		texteBanniere.innerHTML = slides[index].tagLine;
 	}
 
 	else {
 		pointActif[index - 1].classList.remove("dot_selected");
 		pointActif[index].classList.add("dot_selected");
-		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
-		texteBanniere.innerHTML = slides[index].tagLine;
 	}
+
+	pointActif[index].classList.add("dot_selected");
+	imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+	texteBanniere.innerHTML = slides[index].tagLine;
 });
-
-// 
-
