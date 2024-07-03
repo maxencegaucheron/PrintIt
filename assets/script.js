@@ -45,7 +45,6 @@ const point = document.querySelectorAll(".dot");
 
 let arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", function () {
-
 	index--
 
 	if (index < 0) {
@@ -57,9 +56,6 @@ arrow_left.addEventListener("click", function () {
 		point[index + 1].classList.remove("dot_selected");
 	}
 
-	point[index].classList.add("dot_selected");
-	imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
-	texteBanniere.innerHTML = slides[index].tagLine;
 });
 
 // Clic sur la flèche droite
@@ -78,7 +74,18 @@ arrow_right.addEventListener("click", function () {
 		point[index - 1].classList.remove("dot_selected");
 	}
 
-	point[index].classList.add("dot_selected");
-	imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
-	texteBanniere.innerHTML = slides[index].tagLine;
+});
+
+// Clic sur les deux flèches
+
+let arrow = document.querySelectorAll(".arrow");
+
+arrow.forEach(function (arrow) {
+
+	arrow.addEventListener("click", function () {
+
+		point[index].classList.add("dot_selected");
+		imageBanniere.src = "./assets/images/slideshow/" + slides[index].image;
+		texteBanniere.innerHTML = slides[index].tagLine;
+	});
 });
